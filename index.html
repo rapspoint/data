@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEON RUG • CYBERDEGEN ALPHA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    
+    body {
+      font-family: 'Press Start 2P', system-ui;
+      background: #0a0a0a;
+      color: #00ff9f;
+    }
+    
+    .neon-text {
+      text-shadow: 0 0 10px #00ff9f, 0 0 20px #00ff9f, 0 0 40px #ff00ff;
+    }
+    
+    .glitch {
+      position: relative;
+      animation: glitch 2s infinite;
+    }
+    
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
+    }
+    
+    .scanline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(transparent 50%, rgba(0, 255, 159, 0.05) 50%);
+      background-size: 100% 4px;
+      pointer-events: none;
+      z-index: 9999;
+      animation: scan 4s linear infinite;
+    }
+    
+    @keyframes scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+  </style>
+</head>
+<body class="min-h-screen overflow-x-hidden">
+  <!-- SCANLINE -->
+  <div class="scanline"></div>
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 w-full bg-black/80 border-b border-[#00ff9f] z-50 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <span class="text-2xl text-[#ff00ff]">⚡</span>
+        <h1 class="text-xl font-bold neon-text">NEON RUG</h1>
+      </div>
+      <div class="flex gap-6 text-sm">
+        <a href="#memes" class="hover:text-[#ff00ff] transition">MEMECOINS</a>
+        <a href="#nfts" class="hover:text-[#ff00ff] transition">NFTS</a>
+        <a href="#radar" class="hover:text-[#ff00ff] transition">RUG RADAR</a>
+        <button onclick="connectWallet()" class="bg-[#ff00ff] hover:bg-[#00ff9f] text-black px-6 py-2 text-xs border border-white transition">CONNECT WALLET</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pt-32 pb-20 text-center relative">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="glitch mb-8">
+        <h1 class="text-7xl md:text-8xl font-bold neon-text tracking-widest">CYBER DEGEN</h1>
+      </div>
+      <p class="text-[#ff00ff] text-2xl mb-6">ALPHA • EXIT LIQUIDITY • RUGPULL SEASON</p>
+      <p class="max-w-md mx-auto text-gray-400 text-sm">Real-time memecoin prices • NFT drops • Degen tools</p>
+      
+      <div class="mt-12 flex justify-center gap-8 text-sm">
+        <div class="text-center">
+          <div id="btc-price" class="text-3xl font-bold text-yellow-400">---</div>
+          <div class="text-xs text-gray-500">BTC</div>
+        </div>
+        <div class="text-center">
+          <div id="sol-price" class="text-3xl font-bold text-cyan-400">---</div>
+          <div class="text-xs text-gray-500">SOL</div>
+        </div>
+        <div class="text-center">
+          <div id="pepe-price" class="text-3xl font-bold text-green-400">---</div>
+          <div class="text-xs text-gray-500">PEPE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMECOINS LIVE -->
+  <section id="memes" class="py-20 bg-black/50 border-t border-b border-[#ff00ff]">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl mb-12 text-center neon-text">LIVE MEMECOINS 🔥</h2>
+      <div id="meme-table" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- NFT GALLERY -->
+  <section id="nfts" class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl mb-12 text-center neon-text">CYBERPUNK NFT DROPS</h2>
+      <div id="nft-grid" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- RUG RADAR -->
+  <section id="radar" class="py-20 bg-black/50 border-t border-b border-[#ff00ff]">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl mb-12 text-center neon-text">RUGPULL RADAR / EXIT LIQUIDITY</h2>
+      <div class="max-w-2xl mx-auto bg-zinc-950 border border-red-500 p-8 rounded-xl">
+        <div class="text-red-500 text-center mb-8 text-xl">WARNING: HIGH DEGEN ZONE</div>
+        <button onclick="simulateRug()" class="w-full py-6 bg-red-600 hover:bg-red-700 text-white text-xl font-bold border-2 border-white transition">CHECK FOR RUGPULL</button>
+        <div id="rug-result" class="mt-8 text-center text-sm min-h-[100px]"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-12 text-center text-xs text-gray-500 border-t border-[#00ff9f]">
+    <p>NEON RUG ALPHA v0.1 • Built for degen • Data from CoinGecko • Not financial advice • Just vibes</p>
+  </footer>
+
+  <script>
+    // Tailwind script already included
+
+    // Fetch Live Prices
+    async function fetchPrices() {
+      try {
+        const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1');
+        const data = await res.json();
+        
+        // Top prices
+        const btc = data.find(c => c.symbol === 'btc');
+        const sol = data.find(c => c.symbol === 'sol');
+        const pepe = data.find(c => c.symbol === 'pepe');
+        
+        document.getElementById('btc-price').textContent = btc ? '$' + btc.current_price.toLocaleString() : 'N/A';
+        document.getElementById('sol-price').textContent = sol ? '$' + sol.current_price.toFixed(2) : 'N/A';
+        document.getElementById('pepe-price').textContent = pepe ? '$' + pepe.current_price.toFixed(8) : 'N/A';
+
+        // Meme Table
+        const memes = data.filter(c => 
+          ['pepe','dogecoin','shiba-inu','bonk','popcat','giga','mog','wif'].includes(c.symbol)
+        ).slice(0,9);
+        
+        let html = '';
+        memes.forEach(coin => {
+          const change = coin.price_change_percentage_24h || 0;
+          const color = change >= 0 ? 'text-green-400' : 'text-red-400';
+          html += `
+            <div class="bg-zinc-900 border border-[#00ff9f]/30 p-6 rounded-xl hover:border-[#ff00ff] transition group">
+              <div class="flex items-center gap-4">
+                <img src="${coin.image}" class="w-12 h-12 rounded-full">
+                <div>
+                  <div class="font-bold">${coin.name}</div>
+                  <div class="text-xs text-gray-400">${coin.symbol.toUpperCase()}</div>
+                </div>
+              </div>
+              <div class="mt-6 text-3xl font-bold">$${coin.current_price.toLocaleString()}</div>
+              <div class="${color} text-sm">${change.toFixed(2)}% 24h</div>
+            </div>
+          `;
+        });
+        document.getElementById('meme-table').innerHTML = html;
+      } catch(e) {
+        console.error(e);
+      }
+    }
+
+    // NFT Gallery
+    function renderNFTs() {
+      const nfts = [
+        {name: "NEON SAMURAI #001", price: "4.2 ETH", img: "https://picsum.photos/id/1015/400/400"},
+        {name: "CYBER KITSUNE #042", price: "2.8 ETH", img: "https://picsum.photos/id/102/400/400"},
+        {name: "RUGPULL QUEEN #666", price: "1.1 ETH", img: "https://picsum.photos/id/201/400/400"},
+        {name: "EXIT LIQUIDITY #313", price: "3.7 ETH", img: "https://picsum.photos/id/237/400/400"},
+        {name: "DEGEN BOT #007", price: "5.5 ETH", img: "https://picsum.photos/id/180/400/400"},
+        {name: "GLITCH FOX #888", price: "0.9 ETH", img: "https://picsum.photos/id/251/400/400"},
+      ];
+      
+      let html = '';
+      nfts.forEach(nft => {
+        html += `
+          <div class="group relative overflow-hidden border border-[#ff00ff]/30 hover:border-[#00ff9f] transition rounded-xl">
+            <img src="${nft.img}" class="w-full aspect-square object-cover">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black p-4">
+              <div class="font-bold text-sm">${nft.name}</div>
+              <div class="text-[#00ff9f]">${nft.price}</div>
+            </div>
+            <div class="absolute inset-0 bg-[#ff00ff]/10 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+              <span class="text-xs border border-white px-6 py-2">BUY NOW</span>
+            </div>
+          </div>
+        `;
+      });
+      document.getElementById('nft-grid').innerHTML = html;
+    }
+
+    // Rugpull Simulator
+    function simulateRug() {
+      const messages = [
+        "🚨 99% LIQUIDITY REMOVED! RUN!!!",
+        "✅ Honeypot detected. You're safe... for now.",
+        "💀 Dev sold 87% supply. Classic rug.",
+        "🔥 Still pumping. Diamond hands or exit scam?",
+        "🟢 No rug detected. Yet."
+      ];
+      const result = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById('rug-result').innerHTML = `<span class="text-2xl">${result}</span>`;
+    }
+
+    function connectWallet() {
+      alert("🟢 Wallet Connected (Mock) - 0xDEGEN...RUGPULL\n\nWelcome to the degen zone, anon.");
+    }
+
+    // Init
+    window.onload = () => {
+      fetchPrices();
+      renderNFTs();
+      setInterval(fetchPrices, 30000); // refresh every 30s
+    };
+  </script>
+</body>
+</html>
