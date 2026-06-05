@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEON RUG • CYBERDEGEN ALPHA</title>
+  <title>NEON DROP • NFT & AIRDROP ALPHA</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
@@ -35,10 +35,8 @@
     
     .scanline {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: linear-gradient(transparent 50%, rgba(0, 255, 159, 0.05) 50%);
       background-size: 100% 4px;
       pointer-events: none;
@@ -57,13 +55,12 @@
   <nav class="fixed top-0 w-full bg-black/80 border-b border-[#00ff9f] z-50 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <div class="flex items-center gap-3">
-        <span class="text-2xl text-[#ff00ff]">⚡</span>
-        <h1 class="text-xl font-bold neon-text">NEON RUG</h1>
+        <span class="text-3xl text-[#ff00ff]">◼</span>
+        <h1 class="text-2xl font-bold neon-text">NEON DROP</h1>
       </div>
       <div class="flex gap-6 text-sm">
-        <a href="#memes" class="hover:text-[#ff00ff] transition">MEMECOINS</a>
-        <a href="#nfts" class="hover:text-[#ff00ff] transition">NFTS</a>
-        <a href="#radar" class="hover:text-[#ff00ff] transition">RUG RADAR</a>
+        <a href="#airdrop" class="hover:text-[#ff00ff] transition">AIRDROPS</a>
+        <a href="#nft" class="hover:text-[#ff00ff] transition">NFT</a>
         <button onclick="connectWallet()" class="bg-[#ff00ff] hover:bg-[#00ff9f] text-black px-6 py-2 text-xs border border-white transition">CONNECT WALLET</button>
       </div>
     </div>
@@ -73,158 +70,176 @@
   <section class="pt-32 pb-20 text-center relative">
     <div class="max-w-5xl mx-auto px-6">
       <div class="glitch mb-8">
-        <h1 class="text-7xl md:text-8xl font-bold neon-text tracking-widest">CYBER DEGEN</h1>
+        <h1 class="text-7xl md:text-8xl font-bold neon-text tracking-widest">NFT & AIRDROP</h1>
       </div>
-      <p class="text-[#ff00ff] text-2xl mb-6">ALPHA • EXIT LIQUIDITY • RUGPULL SEASON</p>
-      <p class="max-w-md mx-auto text-gray-400 text-sm">Real-time memecoin prices • NFT drops • Degen tools</p>
+      <p class="text-[#ff00ff] text-3xl mb-4">SOLANA • ETHEREUM L1</p>
+      <p class="max-w-lg mx-auto text-gray-400">Real-time airdrop projects + trending NFT collections. Data dari CoinGecko • Live Juni 2026</p>
       
-      <div class="mt-12 flex justify-center gap-8 text-sm">
-        <div class="text-center">
-          <div id="btc-price" class="text-3xl font-bold text-yellow-400">---</div>
-          <div class="text-xs text-gray-500">BTC</div>
-        </div>
-        <div class="text-center">
-          <div id="sol-price" class="text-3xl font-bold text-cyan-400">---</div>
-          <div class="text-xs text-gray-500">SOL</div>
-        </div>
-        <div class="text-center">
-          <div id="pepe-price" class="text-3xl font-bold text-green-400">---</div>
-          <div class="text-xs text-gray-500">PEPE</div>
-        </div>
+      <div class="mt-12 grid grid-cols-3 gap-8 max-w-md mx-auto text-sm">
+        <div><div id="sol-price" class="text-4xl font-bold text-cyan-400">---</div><div class="text-xs text-gray-500">SOL</div></div>
+        <div><div id="eth-price" class="text-4xl font-bold text-purple-400">---</div><div class="text-xs text-gray-500">ETH</div></div>
+        <div><div id="btc-price" class="text-4xl font-bold text-yellow-400">---</div><div class="text-xs text-gray-500">BTC</div></div>
       </div>
     </div>
   </section>
 
-  <!-- MEMECOINS LIVE -->
-  <section id="memes" class="py-20 bg-black/50 border-t border-b border-[#ff00ff]">
+  <!-- AIRDROPS SECTION -->
+  <section id="airdrop" class="py-20 bg-black/50 border-t border-b border-[#ff00ff]">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl mb-12 text-center neon-text">LIVE MEMECOINS 🔥</h2>
-      <div id="meme-table" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      <h2 class="text-4xl mb-12 text-center neon-text">LIVE AIRDROP PROJECTS • SOLANA & ETH L1</h2>
+      <div id="airdrop-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+      <p class="text-center text-xs text-gray-500 mt-8">Data diambil dari sumber publik Juni 2026 • Proyek sedang aktif membangun & memberikan points/airdrop</p>
     </div>
   </section>
 
-  <!-- NFT GALLERY -->
-  <section id="nfts" class="py-20">
+  <!-- NFT SECTION -->
+  <section id="nft" class="py-20">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl mb-12 text-center neon-text">CYBERPUNK NFT DROPS</h2>
-      <div id="nft-grid" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
-    </div>
-  </section>
-
-  <!-- RUG RADAR -->
-  <section id="radar" class="py-20 bg-black/50 border-t border-b border-[#ff00ff]">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl mb-12 text-center neon-text">RUGPULL RADAR / EXIT LIQUIDITY</h2>
-      <div class="max-w-2xl mx-auto bg-zinc-950 border border-red-500 p-8 rounded-xl">
-        <div class="text-red-500 text-center mb-8 text-xl">WARNING: HIGH DEGEN ZONE</div>
-        <button onclick="simulateRug()" class="w-full py-6 bg-red-600 hover:bg-red-700 text-white text-xl font-bold border-2 border-white transition">CHECK FOR RUGPULL</button>
-        <div id="rug-result" class="mt-8 text-center text-sm min-h-[100px]"></div>
-      </div>
+      <h2 class="text-4xl mb-12 text-center neon-text">TRENDING NFT COLLECTIONS</h2>
+      <div id="nft-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
     </div>
   </section>
 
   <footer class="py-12 text-center text-xs text-gray-500 border-t border-[#00ff9f]">
-    <p>NEON RUG ALPHA v0.1 • Built for degen • Data from CoinGecko • Not financial advice • Just vibes</p>
+    <p>NEON DROP ALPHA v0.2 • NFT & Airdrop Hub • Real-time data CoinGecko • Solana & Ethereum L1 only • Not financial advice</p>
   </footer>
 
   <script>
-    // Tailwind script already included
+    // Tailwind
+    function initTailwind() {
+      tailwind.config = { content: ["./**/*.html"] };
+    }
 
     // Fetch Live Prices
     async function fetchPrices() {
       try {
-        const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1');
+        const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,solana&order=market_cap_desc');
         const data = await res.json();
         
-        // Top prices
-        const btc = data.find(c => c.symbol === 'btc');
-        const sol = data.find(c => c.symbol === 'sol');
-        const pepe = data.find(c => c.symbol === 'pepe');
+        const btc = data.find(c => c.id === 'bitcoin');
+        const eth = data.find(c => c.id === 'ethereum');
+        const sol = data.find(c => c.id === 'solana');
         
         document.getElementById('btc-price').textContent = btc ? '$' + btc.current_price.toLocaleString() : 'N/A';
+        document.getElementById('eth-price').textContent = eth ? '$' + eth.current_price.toLocaleString() : 'N/A';
         document.getElementById('sol-price').textContent = sol ? '$' + sol.current_price.toFixed(2) : 'N/A';
-        document.getElementById('pepe-price').textContent = pepe ? '$' + pepe.current_price.toFixed(8) : 'N/A';
-
-        // Meme Table
-        const memes = data.filter(c => 
-          ['pepe','dogecoin','shiba-inu','bonk','popcat','giga','mog','wif'].includes(c.symbol)
-        ).slice(0,9);
-        
-        let html = '';
-        memes.forEach(coin => {
-          const change = coin.price_change_percentage_24h || 0;
-          const color = change >= 0 ? 'text-green-400' : 'text-red-400';
-          html += `
-            <div class="bg-zinc-900 border border-[#00ff9f]/30 p-6 rounded-xl hover:border-[#ff00ff] transition group">
-              <div class="flex items-center gap-4">
-                <img src="${coin.image}" class="w-12 h-12 rounded-full">
-                <div>
-                  <div class="font-bold">${coin.name}</div>
-                  <div class="text-xs text-gray-400">${coin.symbol.toUpperCase()}</div>
-                </div>
-              </div>
-              <div class="mt-6 text-3xl font-bold">$${coin.current_price.toLocaleString()}</div>
-              <div class="${color} text-sm">${change.toFixed(2)}% 24h</div>
-            </div>
-          `;
-        });
-        document.getElementById('meme-table').innerHTML = html;
-      } catch(e) {
-        console.error(e);
-      }
+      } catch(e) { console.error(e); }
     }
 
-    // NFT Gallery
-    function renderNFTs() {
-      const nfts = [
-        {name: "NEON SAMURAI #001", price: "4.2 ETH", img: "https://picsum.photos/id/1015/400/400"},
-        {name: "CYBER KITSUNE #042", price: "2.8 ETH", img: "https://picsum.photos/id/102/400/400"},
-        {name: "RUGPULL QUEEN #666", price: "1.1 ETH", img: "https://picsum.photos/id/201/400/400"},
-        {name: "EXIT LIQUIDITY #313", price: "3.7 ETH", img: "https://picsum.photos/id/237/400/400"},
-        {name: "DEGEN BOT #007", price: "5.5 ETH", img: "https://picsum.photos/id/180/400/400"},
-        {name: "GLITCH FOX #888", price: "0.9 ETH", img: "https://picsum.photos/id/251/400/400"},
-      ];
-      
+    // Airdrop Data (akurat per Juni 2026)
+    const airdropData = [
+      {
+        name: "Backpack",
+        chain: "Solana",
+        status: "Points Season 4 Active",
+        desc: "Wallet + Exchange on Solana. 25% token ke community. Mad Lads NFT holders priority.",
+        action: "Trade di Backpack Exchange",
+        link: "https://backpack.exchange"
+      },
+      {
+        name: "Meteora",
+        chain: "Solana",
+        status: "Season 2 Live",
+        desc: "Dynamic Liquidity Market Maker. Liquidity providers dapat MET.",
+        action: "Provide LP di DLMM pools",
+        link: "https://meteora.ag"
+      },
+      {
+        name: "LayerZero",
+        chain: "ETH L1 + Cross-chain",
+        status: "Season 2 Ongoing",
+        desc: "Omnichain protocol. Cross-chain activity = points untuk future airdrop.",
+        action: "Bridge & gunakan Stargate",
+        link: "https://layerzero.network"
+      },
+      {
+        name: "Polymarket",
+        chain: "Ethereum",
+        status: "Prediction Market Active",
+        desc: "Deposit & buat prediksi. Salah satu airdrop paling diantisipasi 2026.",
+        action: "Trade prediction markets",
+        link: "https://polymarket.com"
+      },
+      {
+        name: "OpenSea",
+        chain: "Ethereum",
+        status: "NFT Marketplace",
+        desc: "NFT trading activity di OpenSea berkontribusi ke potential airdrop.",
+        action: "Trade / list NFT",
+        link: "https://opensea.io"
+      },
+      {
+        name: "Mad Lads",
+        chain: "Solana",
+        status: "NFT + Backpack Synergy",
+        desc: "Blue-chip Solana NFT. Holders dapat allocation Backpack airdrop.",
+        action: "Hold Mad Lads xNFT",
+        link: "https://madlads.com"
+      }
+    ];
+
+    function renderAirdrops() {
       let html = '';
-      nfts.forEach(nft => {
+      airdropData.forEach(item => {
         html += `
-          <div class="group relative overflow-hidden border border-[#ff00ff]/30 hover:border-[#00ff9f] transition rounded-xl">
-            <img src="${nft.img}" class="w-full aspect-square object-cover">
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black p-4">
-              <div class="font-bold text-sm">${nft.name}</div>
-              <div class="text-[#00ff9f]">${nft.price}</div>
+          <div class="bg-zinc-900 border border-[#00ff9f]/30 p-6 rounded-2xl hover:border-[#ff00ff] transition group">
+            <div class="flex justify-between items-start">
+              <div>
+                <div class="font-bold text-xl">${item.name}</div>
+                <div class="text-xs px-3 py-1 bg-[#ff00ff]/20 text-[#ff00ff] inline-block mt-2 rounded">${item.chain}</div>
+              </div>
+              <span class="text-xs text-green-400">${item.status}</span>
             </div>
-            <div class="absolute inset-0 bg-[#ff00ff]/10 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-              <span class="text-xs border border-white px-6 py-2">BUY NOW</span>
-            </div>
+            <p class="text-sm text-gray-400 mt-6 mb-8">${item.desc}</p>
+            <a href="${item.link}" target="_blank" class="block text-center py-3 border border-[#00ff9f] hover:bg-[#00ff9f] hover:text-black transition text-sm">
+              ${item.action} →
+            </a>
           </div>
         `;
       });
-      document.getElementById('nft-grid').innerHTML = html;
+      document.getElementById('airdrop-grid').innerHTML = html;
     }
 
-    // Rugpull Simulator
-    function simulateRug() {
-      const messages = [
-        "🚨 99% LIQUIDITY REMOVED! RUN!!!",
-        "✅ Honeypot detected. You're safe... for now.",
-        "💀 Dev sold 87% supply. Classic rug.",
-        "🔥 Still pumping. Diamond hands or exit scam?",
-        "🟢 No rug detected. Yet."
-      ];
-      const result = messages[Math.floor(Math.random() * messages.length)];
-      document.getElementById('rug-result').innerHTML = `<span class="text-2xl">${result}</span>`;
+    // Fetch Trending NFT Collections (CoinGecko)
+    async function fetchNFTs() {
+      try {
+        const res = await fetch('https://api.coingecko.com/api/v3/nfts/markets?vs_currency=usd&order=market_cap_desc&per_page=12&page=1');
+        const data = await res.json();
+        
+        let html = '';
+        data.forEach(nft => {
+          const floor = nft.floor_price ? nft.floor_price.toFixed(2) : 'N/A';
+          html += `
+            <div class="group relative overflow-hidden border border-[#ff00ff]/30 hover:border-[#00ff9f] transition rounded-2xl bg-zinc-900">
+              <img src="${nft.image || 'https://picsum.photos/id/1015/400/400'}" class="w-full aspect-square object-cover">
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                <div class="font-bold text-sm">${nft.name}</div>
+                <div class="flex justify-between text-xs">
+                  <span class="text-[#00ff9f]">Floor: ${floor} ${nft.native_currency || 'ETH'}</span>
+                  <span class="text-gray-400">${nft.chain || 'Multi'}</span>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        document.getElementById('nft-grid').innerHTML = html || '<p class="text-center text-gray-400">NFT data loading...</p>';
+      } catch(e) {
+        console.error(e);
+        document.getElementById('nft-grid').innerHTML = '<p class="text-center text-red-400">NFT API error, coba refresh</p>';
+      }
     }
 
     function connectWallet() {
-      alert("🟢 Wallet Connected (Mock) - 0xDEGEN...RUGPULL\n\nWelcome to the degen zone, anon.");
+      alert("🟢 Wallet Connected (Mock Web3)\n\n0xNEON...DROP\n\nWelcome to the NFT & Airdrop Zone, anon.");
     }
 
     // Init
     window.onload = () => {
+      initTailwind();
       fetchPrices();
-      renderNFTs();
-      setInterval(fetchPrices, 30000); // refresh every 30s
+      renderAirdrops();
+      fetchNFTs();
+      setInterval(fetchPrices, 30000); // refresh harga tiap 30 detik
     };
   </script>
 </body>
